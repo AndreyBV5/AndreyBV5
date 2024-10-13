@@ -3,8 +3,6 @@
 <div align="center">
   <h1>Hello 👋, I'm Andrey</h1>
 
-  <img alt="Coding" width="400" src="https://i.pinimg.com/originals/77/ca/a3/77caa32884d735d439ade45ba37feaf2.gif">
-
   <p>
     <img src="https://komarev.com/ghpvc/?username=andreybv5&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
   </p>
