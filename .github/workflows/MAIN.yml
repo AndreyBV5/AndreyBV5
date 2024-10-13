@@ -1,14 +1,19 @@
 # GitHub Action for generating a contribution graph with a snake eating your contributions.
-
 name: Generate Snake
 
+# Controls when the action will run.
 on:
-  # Programación para ejecutar cada 6 horas
+  # Programado para cada 6 horas
   schedule:
     - cron: "0 */6 * * *"
 
-  # Permite ejecutar la acción manualmente desde la pestaña de Actions en GitHub
+  # Permite ejecutar manualmente desde la pestaña de Actions
   workflow_dispatch:
+  
+  # También se ejecuta en cada push a la rama main
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -18,32 +23,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Verifica el repositorio para que el job pueda acceder a él
-      - uses: actions/checkout@v3  # Actualizado a v3
+      # Verifica el repositorio
+      - uses: actions/checkout@v3
 
-      # Genera el snake
-      - uses: Platane/snk@master
+      # Genera los archivos del snake
+      - uses: Platane/snk@v3
         id: snake-gif
         with:
-          github_user_name: mishmanners  # Cambia esto por tu nombre de usuario de GitHub
-          gif_out_path: dist/github-contribution-grid-snake.gif
-          svg_out_path: dist/github-contribution-grid-snake.svg
+          github_user_name: AndreyBV5
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Muestra el estado del repositorio para facilitar la depuración
+      # Muestra el estado del repo
       - run: git status
 
-      # Push de los cambios
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      # Empuja los nuevos archivos a la rama de salida
+      - uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main  # Cambia "master" por "main" si tu repositorio usa "main"
-          force: true
-
-      # Publica los archivos en GitHub Pages
-      - uses: crazy-max/ghaction-github-pages@v3.1.0  # Actualizado a v3.1.0
-        with:
-          target_branch: output  # La rama de salida que mencionamos arriba
+          target_branch: output
           build_dir: dist
+          commit_message: Update snake animations
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
