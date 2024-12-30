@@ -10,13 +10,13 @@
    <h2>I am passionate about developing web, mobile or desktop applications from Costa Rica</h2>
    <br/>
    
-   🌱 I’m currently learning **Python, Flutter, Java, JavaScript**
+   🌱 I’m currently learning: **Python, Flutter, Java, JavaScript**
    
-   💬 Ask me about **React, Dart, Flet, Boostrap, Tailwind**
+   💬 Ask me about: **React, Dart, Flet, Boostrap, Tailwind**
    
-   📫 How to reach me **Andrey0130player@gmail.com**
+   📫 How to reach me: **Andrey0130player@gmail.com**
    
-   ⚡ Fun fact **I like to have fun in the process**
+   ⚡ Fun fact: **I like to have fun in the process**
   
   <br/>
 
